@@ -5,8 +5,9 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
+import Home from './pages/Home';
+import About from './pages/About';
+import Work from './pages/Work';
 
 export default function App() {
   return (
@@ -21,7 +22,7 @@ export default function App() {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/work">Work</Link>
             </li>
           </ul>
         </nav>
@@ -29,59 +30,14 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <div className="App">
-              <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  About
-                </p>
-                <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn React
-                </a>
-              </header>
-            </div>
+          <Route path="/work">
+            <Work />
           </Route>
-          <Route path="/users">
-            <div className="App">
-              <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  Users
-                </p>
-                <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn React
-                </a>
-              </header>
-            </div>
+          <Route path="/about">
+            <About />
           </Route>
           <Route path="/">
-            <div className="App">
-              <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  Home
-                </p>
-                <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn React
-                </a>
-              </header>
-            </div>
+            <Home />
           </Route>
         </Switch>
       </div>
