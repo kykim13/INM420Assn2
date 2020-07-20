@@ -1,46 +1,45 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Transition, TransitionGroup } from 'react-transition-group';
+import { play, exit } from './timelines'
 import Home from './pages/Home';
 import About from './pages/About';
 import Work from './pages/Work';
+import Nav from './components/Nav'
 
 export default function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/work">Work</Link>
-            </li>
-          </ul>
-        </nav>
+        <Nav/>
+        <Route render={({ location }) => {
+          const { pathname, key } = location;
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/work">
-            <Work />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+          return (
+            <TransitionGroup component={null}>
+              <Transition
+                key={key}
+                appear={true}
+                onEnter={(node, appears) => play(pathname, node, appears)}
+                onExit={(node) => exit(node)}
+                timeout={{enter: 750, exit: 1000}}
+              >
+                <Switch location={location}>
+                  <Route path="/work">
+                    <Work />
+                  </Route>
+                  <Route path="/about">
+                    <About />
+                  </Route>
+                  <Route path="/">
+                    <Home />
+                  </Route>
+                </Switch>
+              </Transition>
+            </TransitionGroup>
+          )
+        }}/>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
