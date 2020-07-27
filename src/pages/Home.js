@@ -1,17 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './Home.css';
 
 export default function Home() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="Home">
+      <header>
+        <img src={logo} className="Page-logo" alt="logo" />
         <p>
           Home
         </p>
         <a
-          className="App-link"
+          className="Page-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"

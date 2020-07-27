@@ -10,7 +10,7 @@ import Nav from './components/Nav'
 export default function App() {
   return (
     <BrowserRouter>
-      <div>
+      <div className="Page">
         <Nav/>
         <Route render={({ location }) => {
           const { pathname, key } = location;
