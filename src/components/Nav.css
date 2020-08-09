@@ -1,22 +1,31 @@
 nav {
-  position: fixed;
+  background-color: gray;
+  position: absolute;
   display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 20px;
-  z-index: 1000;
+  left: 0;
+  overflow: auto;
+  width: 120px;
+  height: 100%;
+  z-index: 100;
 }
 
-ul {
+ul.mylist li, ol.mylist li {
+  padding: 5px 0px 5px 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #efefef;
+  font-size: 12px;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
-li {
-  display: inline-block;
-  margin-left: 10px;
-  margin-right: 10px;
+ul.mylist li,
+ol.mylist li {
+    transition: background-color 0.3s linear;
+}
+  
+ul.mylist li:hover,
+ol.mylist li:hover {
+    background-color: rgba(255, 255, 255, 0.322);
+  
 }
 
 a {
